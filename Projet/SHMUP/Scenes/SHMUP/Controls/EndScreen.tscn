@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://lj8ux3tv46c3"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/UI/EndScreen.cs" id="1_qyjni"]
+[ext_resource type="Texture2D" uid="uid://c8je6ubhssou3" path="res://Assets/SHMUP/UserInterface/Button.png" id="2_5p5b2"]
+[ext_resource type="Texture2D" uid="uid://bug7ia3ht42p8" path="res://Assets/SHMUP/UserInterface/ButtonHover.png" id="3_2ih8w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ru0n"]
+font_size = 64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhpnm"]
+texture = ExtResource("2_5p5b2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opn1e"]
+texture = ExtResource("3_2ih8w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nr5en"]
+texture = ExtResource("2_5p5b2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_edjjn"]
+texture = ExtResource("3_2ih8w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pgqv4"]
+texture = ExtResource("2_5p5b2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5cal"]
+texture = ExtResource("3_2ih8w")
+
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("title", "retry", "mainMenu", "Quit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qyjni")
+title = NodePath("Title")
+retry = NodePath("VBoxContainer/Retry")
+mainMenu = NodePath("VBoxContainer/MainMenu")
+Quit = NodePath("VBoxContainer/Quit")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.611765, 0.623529, 0.537255)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "
+Game Over"
+label_settings = SubResource("LabelSettings_8ru0n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Retry" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_xhpnm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_opn1e")
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_nr5en")
+theme_override_styles/hover = SubResource("StyleBoxTexture_edjjn")
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_pgqv4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q5cal")
+text = "Quit
+"

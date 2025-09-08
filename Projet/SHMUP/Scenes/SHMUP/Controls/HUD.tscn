@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://di036xhksuip0"]
+
+[ext_resource type="Texture2D" uid="uid://wweqobkp1phc" path="res://Assets/SHMUP/Texture/GameObjects/Collectibles/SmartBomb.png" id="1_oad73"]
+[ext_resource type="Script" path="res://Scripts/SHMUP/UI/HUD.cs" id="1_xs115"]
+[ext_resource type="PackedScene" uid="uid://ct5alvqanbd3v" path="res://Scenes/SHMUP/Controls/PauseMenu.tscn" id="3_ntbnf"]
+[ext_resource type="PackedScene" uid="uid://lj8ux3tv46c3" path="res://Scenes/SHMUP/Controls/EndScreen.tscn" id="4_ad7n0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw3jd"]
+bg_color = Color(1, 0.308906, 0.126683, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_810wa"]
+bg_color = Color(0, 0.726791, 0.147059, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c31xe"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_evbqu"]
+font_size = 32
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("healthBar", "scoreLabel", "smartBombContainer", "godModLabel", "retryButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xs115")
+healthBar = NodePath("VBoxContainer/Health")
+scoreLabel = NodePath("Label")
+smartBombContainer = NodePath("HBoxContainer")
+godModLabel = NodePath("VBoxContainer2/GodMod")
+retryButton = NodePath("VBoxContainer2/ButtonRetry")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.343
+anchor_bottom = 0.054
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -0.0400391
+offset_bottom = 0.119999
+
+[node name="Health" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_uw3jd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_810wa")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -117.0
+offset_right = 117.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "SCORE : 000000"
+label_settings = SubResource("LabelSettings_c31xe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -448.0
+offset_right = 4027.0
+offset_bottom = 1101.0
+grow_horizontal = 0
+scale = Vector2(0.1, 0.1)
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("1_oad73")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_oad73")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_oad73")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_ntbnf")]
+visible = false
+layout_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ButtonRetry" type="Button" parent="VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Retry"
+
+[node name="GodMod" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "GodMod"
+label_settings = SubResource("LabelSettings_evbqu")
+
+[node name="EndScreen" parent="." instance=ExtResource("4_ad7n0")]
+visible = false
+layout_mode = 1

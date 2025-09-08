@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dg5uxxukggqhi"]
+
+[ext_resource type="Texture2D" uid="uid://dwwojchwags3a" path="res://Assets/SHMUP/Texture/GameObjects/Movables/Characters/Player/Player1.png" id="1_wal1v"]
+[ext_resource type="Texture2D" uid="uid://62clxtubknee" path="res://Assets/SHMUP/Texture/GameObjects/Movables/Characters/Player/Player2.png" id="2_x718s"]
+[ext_resource type="Texture2D" uid="uid://c8w2db0wos1xo" path="res://Assets/SHMUP/Texture/GameObjects/Movables/Characters/Player/Player3.png" id="3_82p0u"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wal1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x718s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_82p0u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

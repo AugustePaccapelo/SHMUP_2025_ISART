@@ -1,0 +1,46 @@
+[gd_scene load_steps=12 format=3 uid="uid://bt4m8p3g1wadc"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/Managers/SoundManager.cs" id="1_kqsre"]
+[ext_resource type="AudioStream" uid="uid://b35t8mc32fvhg" path="res://Audio/TickTracks/TickMove.ogg" id="3_st17o"]
+[ext_resource type="Script" path="res://Scripts/Ticks/TickEvents/TickMove.cs" id="4_op3kc"]
+[ext_resource type="AudioStream" uid="uid://dg4tq7slojae0" path="res://Audio/TickTracks/TickShoot.ogg" id="5_ti1gx"]
+[ext_resource type="Script" path="res://Scripts/Ticks/TickEvents/TickShoot.cs" id="6_87c43"]
+[ext_resource type="AudioStream" uid="uid://6yinrrg6k2a0" path="res://Audio/TickTracks/TickNextPhase.ogg" id="9_al7cl"]
+[ext_resource type="AudioStream" uid="uid://pyfot2iv68cr" path="res://Audio/TickTracks/TickRotate.ogg" id="9_u4s6u"]
+[ext_resource type="Script" path="res://Scripts/Ticks/TickEvents/TickNextPhase.cs" id="10_1o5si"]
+[ext_resource type="Script" path="res://Scripts/Ticks/TickEvents/TickRotate.cs" id="10_ccygg"]
+[ext_resource type="AudioStream" uid="uid://vnyrxnm2cmyg" path="res://Audio/TickTracks/TickSpawn.ogg" id="11_nm8it"]
+[ext_resource type="Script" path="res://Scripts/Ticks/TickEvents/TickSpawn.cs" id="12_mxb02"]
+
+[node name="SoundManager" type="Node" node_paths=PackedStringArray("TickMove", "TickShoot", "TickRotate", "TickSpawn", "TickNextPhase", "sfxContainer")]
+script = ExtResource("1_kqsre")
+TickMove = NodePath("TickEvents/TickMove")
+TickShoot = NodePath("TickEvents/TickShoot")
+TickRotate = NodePath("TickEvents/TickRotate")
+TickSpawn = NodePath("TickEvents/TickSpawn")
+TickNextPhase = NodePath("TickEvents/TickNextPhase")
+sfxContainer = NodePath("SFX")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="TickEvents" type="Node" parent="."]
+
+[node name="TickMove" type="AudioStreamPlayer" parent="TickEvents"]
+stream = ExtResource("3_st17o")
+script = ExtResource("4_op3kc")
+
+[node name="TickShoot" type="AudioStreamPlayer" parent="TickEvents"]
+stream = ExtResource("5_ti1gx")
+script = ExtResource("6_87c43")
+
+[node name="TickNextPhase" type="AudioStreamPlayer" parent="TickEvents"]
+stream = ExtResource("9_al7cl")
+script = ExtResource("10_1o5si")
+
+[node name="TickRotate" type="AudioStreamPlayer" parent="TickEvents"]
+stream = ExtResource("9_u4s6u")
+script = ExtResource("10_ccygg")
+
+[node name="TickSpawn" type="AudioStreamPlayer" parent="TickEvents"]
+stream = ExtResource("11_nm8it")
+script = ExtResource("12_mxb02")

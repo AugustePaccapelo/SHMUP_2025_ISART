@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bruki2e6mr2es"]
+
+[ext_resource type="SpriteFrames" uid="uid://cmn6ip58vkewv" path="res://Assets/SHMUP/Texture/GameObjects/Movables/Characters/Enemies/Enemy1/SpriteFramesEnemy1.tres" id="1_0bc7d"]
+[ext_resource type="Script" path="res://Scripts/SHMUP/GameObjects/Movables/Characters/Enemies/Enemy1.cs" id="1_n660o"]
+[ext_resource type="PackedScene" uid="uid://cjhkkiobo7pof" path="res://Scenes/SHMUP/Particules/Propulsion.tscn" id="3_yvt1l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq6lj"]
+radius = 6.11765
+height = 14.654
+
+[node name="Enemy1" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_n660o")
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("3_yvt1l")]
+position = Vector2(24.6667, 3.33333)
+rotation = 3.14159
+scale = Vector2(0.2, -0.1)
+
+[node name="Renderer" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.025, 0.025)
+sprite_frames = ExtResource("1_0bc7d")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(9, 1)
+rotation = 1.5708
+scale = Vector2(2.125, 3.685)
+shape = SubResource("CapsuleShape2D_lq6lj")
+
+[node name="ShootPos" type="Node2D" parent="."]

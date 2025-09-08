@@ -1,0 +1,17 @@
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.csproj.AssemblyReference.cache
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.GeneratedMSBuildEditorConfig.editorconfig
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.AssemblyInfoInputs.cache
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.AssemblyInfo.cs
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.csproj.CoreCompileInputs.cache
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\bin\Debug\SHMUP.deps.json
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\bin\Debug\SHMUP.runtimeconfig.json
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\bin\Debug\SHMUP.dll
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\bin\Debug\SHMUP.pdb
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.csproj.Up2Date
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.dll
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\refint\SHMUP.dll
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.pdb
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\SHMUP.genruntimeconfig.cache
+C:\ISARTDigital\GDP1B\Projets\SHMUP\PACCAPELO_Auguste_GDP1B_SHMUP\Projet\SHMUP\.godot\mono\temp\obj\Debug\ref\SHMUP.dll

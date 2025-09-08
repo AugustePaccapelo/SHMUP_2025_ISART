@@ -1,0 +1,14 @@
+Button
+TextureRect
+GPUParticles2D
+Sprite2D
+Panel
+VBoxContainer
+Label
+HBoxContainer
+ColorRect
+Control
+AnimatedSprite2D
+Node
+AudioStreamPlayer
+AspectRatioContainer

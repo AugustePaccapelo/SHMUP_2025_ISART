@@ -1,0 +1,1862 @@
+[gd_scene load_steps=19 format=3 uid="uid://bqlxpptwxrypy"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/Managers/MainLevelManager.cs" id="1_dc3sq"]
+[ext_resource type="Texture2D" uid="uid://tjw583l4ewt6" path="res://Assets/SHMUP/Texture/Decor/BackGround1.png" id="2_a2qey"]
+[ext_resource type="Texture2D" uid="uid://bk733ir0evgyc" path="res://Assets/SHMUP/Texture/Decor/BackGround2.png" id="3_w84uh"]
+[ext_resource type="PackedScene" uid="uid://dmlb2mg1ddoyy" path="res://Scenes/SHMUP/GameObjects/Obstacle.tscn" id="4_0b4bj"]
+[ext_resource type="PackedScene" uid="uid://df7lcu7flrsw4" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/BossPositions.tscn" id="4_080jy"]
+[ext_resource type="PackedScene" uid="uid://ccg6sgr5n0yqm" path="res://Scenes/SHMUP/GameObjects/Collectibles/SmartBomb.tscn" id="4_alxw7"]
+[ext_resource type="Texture2D" uid="uid://3nlgbdbjmn1s" path="res://Assets/SHMUP/Texture/Decor/Horizon1.png" id="4_rdhi8"]
+[ext_resource type="PackedScene" uid="uid://b0vee3sk5ksn7" path="res://Scenes/SHMUP/GameObjects/Collectibles/Health.tscn" id="5_4ha15"]
+[ext_resource type="Texture2D" uid="uid://bubd38wy7ppos" path="res://Assets/SHMUP/Texture/Decor/Horizon2.png" id="5_6pohl"]
+[ext_resource type="Texture2D" uid="uid://xhytntpa6bfw" path="res://Assets/SHMUP/Texture/Decor/ForeGround.png" id="5_amavy"]
+[ext_resource type="PackedScene" uid="uid://bruki2e6mr2es" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Enemy1.tscn" id="6_725qs"]
+[ext_resource type="Texture2D" uid="uid://r81w827t18x1" path="res://Assets/SHMUP/Texture/Decor/MiddleGround1.png" id="6_uha7e"]
+[ext_resource type="Texture2D" uid="uid://dp46uxt32edpm" path="res://Assets/SHMUP/Texture/Decor/MiddleGround2.png" id="7_bnqrf"]
+[ext_resource type="PackedScene" uid="uid://nqupybbt215c" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Boss.tscn" id="9_urhq7"]
+[ext_resource type="PackedScene" uid="uid://dbpglfddkgb7u" path="res://Scenes/SHMUP/GameObjects/Collectibles/Upgrade.tscn" id="10_wcjx6"]
+[ext_resource type="PackedScene" uid="uid://bqixv7hpv8unc" path="res://Scenes/SHMUP/GameObjects/ObstacleDestructible.tscn" id="11_deirw"]
+[ext_resource type="PackedScene" uid="uid://c84yt4ypfouui" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Enemy2.tscn" id="12_8j3b8"]
+[ext_resource type="PackedScene" uid="uid://c8maf53415ser" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Enemy3.tscn" id="13_uwu7r"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_dc3sq")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BackGround" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("2_a2qey")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+position = Vector2(1280, 0)
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("3_w84uh")
+centered = false
+
+[node name="Horizon" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Horizon"]
+position = Vector2(0, 153)
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("4_rdhi8")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Horizon"]
+position = Vector2(1280, 253)
+scale = Vector2(0.333333, 0.333096)
+texture = ExtResource("5_6pohl")
+centered = false
+
+[node name="Middle" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 2
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Middle"]
+position = Vector2(0, 367.09)
+scale = Vector2(0.333333, 0.332621)
+texture = ExtResource("6_uha7e")
+centered = false
+offset = Vector2(0, 236)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middle"]
+position = Vector2(1280, 338.988)
+scale = Vector2(0.333333, 0.333053)
+texture = ExtResource("7_bnqrf")
+centered = false
+offset = Vector2(0, 236)
+
+[node name="GameLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="GameContainer" type="Node2D" parent="ParallaxBackground/GameLayer"]
+z_index = 3
+
+[node name="AmmoContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="CollectiblesContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="SmartBomb" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("4_alxw7")]
+position = Vector2(4862, 164)
+
+[node name="SmartBomb2" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("4_alxw7")]
+position = Vector2(4865, 586)
+
+[node name="SmartBomb4" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("4_alxw7")]
+position = Vector2(15033, 408)
+
+[node name="Health" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(4627, 163)
+
+[node name="Health2" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(7021, 365)
+
+[node name="Health9" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(22631, 216)
+
+[node name="Health10" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(25025, 418)
+
+[node name="Health3" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(15176, 413)
+
+[node name="Health4" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(9448, 248)
+
+[node name="Health5" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(9453, 389)
+
+[node name="Health7" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(18793, 340)
+
+[node name="Health8" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(18798, 481)
+
+[node name="SmartBomb3" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("4_alxw7")]
+position = Vector2(12419, 687)
+
+[node name="Health6" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(18028, 762)
+
+[node name="SmartBomb5" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("4_alxw7")]
+position = Vector2(18022, 266)
+
+[node name="Health11" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(27445, 257)
+
+[node name="Upgrade" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("10_wcjx6")]
+position = Vector2(27475, 442)
+
+[node name="Health12" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(30665, 281)
+
+[node name="Upgrade2" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("10_wcjx6")]
+position = Vector2(30695, 466)
+
+[node name="Health13" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_4ha15")]
+position = Vector2(33763, 326)
+
+[node name="Upgrade3" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("10_wcjx6")]
+position = Vector2(33793, 511)
+
+[node name="ObstaclesContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="Area2D28" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(4389, 224)
+
+[node name="Area2D29" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(4389, 127)
+
+[node name="Area2D30" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(4389, 176)
+
+[node name="Area2D37" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(7649, 206)
+
+[node name="Area2D69" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(7649, 109)
+
+[node name="Area2D70" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(7649, 158)
+
+[node name="Area2D100" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(11732, 305)
+
+[node name="Area2D101" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(11732, 208)
+
+[node name="Area2D102" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(11732, 257)
+
+[node name="Area2D103" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(11732, 158)
+
+[node name="Area2D104" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(11732, 61)
+
+[node name="Area2D106" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(11732, 11)
+
+[node name="Area2D105" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(11732, 110)
+
+[node name="Area2D107" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 899)
+
+[node name="Area2D108" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 802)
+
+[node name="Area2D109" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 851)
+
+[node name="Area2D110" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 752)
+
+[node name="Area2D111" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 655)
+
+[node name="Area2D112" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 605)
+
+[node name="Area2D113" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 704)
+
+[node name="Area2D114" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 555)
+
+[node name="Area2D115" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 458)
+
+[node name="Area2D116" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 507)
+
+[node name="Area2D137" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 408)
+
+[node name="Area2D138" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 311)
+
+[node name="Area2D139" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 261)
+
+[node name="Area2D140" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 360)
+
+[node name="Area2D141" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 211)
+
+[node name="Area2D145" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 114)
+
+[node name="Area2D146" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 163)
+
+[node name="Area2D238" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 64)
+
+[node name="Area2D239" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, -33)
+
+[node name="Area2D240" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, -83)
+
+[node name="Area2D241" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(14021, 16)
+
+[node name="Area2D84" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(7649, 554)
+
+[node name="Area2D85" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(7649, 457)
+
+[node name="Area2D86" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(7649, 506)
+
+[node name="Area2D" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2030, 25)
+
+[node name="Area2D2" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2030, 75)
+
+[node name="Area2D3" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2030, 125)
+
+[node name="Area2D4" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2030, 175)
+
+[node name="Area2D5" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2030, 225)
+
+[node name="Area2D117" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10756, 51)
+
+[node name="Area2D118" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10756, 101)
+
+[node name="Area2D119" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10756, 151)
+
+[node name="Area2D120" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10756, 201)
+
+[node name="Area2D121" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10756, 251)
+
+[node name="Area2D122" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10759, 297)
+
+[node name="Area2D123" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10759, 347)
+
+[node name="Area2D124" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10759, 397)
+
+[node name="Area2D125" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10759, 447)
+
+[node name="Area2D126" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10759, 497)
+
+[node name="Area2D127" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 603)
+
+[node name="Area2D128" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 653)
+
+[node name="Area2D129" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 703)
+
+[node name="Area2D130" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 753)
+
+[node name="Area2D131" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 803)
+
+[node name="Area2D132" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 355)
+
+[node name="Area2D133" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 405)
+
+[node name="Area2D134" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 455)
+
+[node name="Area2D135" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 505)
+
+[node name="Area2D136" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11732, 555)
+
+[node name="Area2D142" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11730, -140)
+isDestructible = true
+
+[node name="Area2D143" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11730, -90)
+isDestructible = true
+
+[node name="Area2D144" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(11730, -40)
+isDestructible = true
+
+[node name="Area2D167" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 756)
+
+[node name="Area2D168" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 806)
+
+[node name="Area2D169" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 856)
+
+[node name="Area2D170" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 906)
+
+[node name="Area2D171" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 956)
+
+[node name="Area2D172" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 518)
+
+[node name="Area2D173" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 568)
+
+[node name="Area2D174" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 618)
+
+[node name="Area2D175" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 668)
+
+[node name="Area2D242" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(14712, 338)
+
+[node name="Area2D243" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(14712, 388)
+
+[node name="Area2D244" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(14712, 438)
+
+[node name="Area2D245" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(14712, 488)
+
+[node name="Area2D176" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15030, 718)
+
+[node name="Area2D177" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, -60)
+
+[node name="Area2D178" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, -10)
+
+[node name="Area2D179" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 40)
+
+[node name="Area2D180" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 90)
+
+[node name="Area2D181" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 140)
+
+[node name="Area2D182" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 102)
+
+[node name="Area2D183" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 152)
+
+[node name="Area2D184" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 202)
+
+[node name="Area2D185" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 252)
+
+[node name="Area2D186" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15026, 302)
+
+[node name="Area2D10" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2029, 495)
+
+[node name="Area2D11" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2029, 545)
+
+[node name="Area2D12" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2029, 595)
+
+[node name="Area2D13" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2029, 645)
+
+[node name="Area2D14" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(2029, 695)
+
+[node name="Area2D6" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 25)
+
+[node name="Area2D7" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 75)
+
+[node name="Area2D8" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 125)
+
+[node name="Area2D9" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 175)
+
+[node name="Area2D74" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3649, 230)
+rotation = 1.5708
+
+[node name="Area2D75" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3699, 230)
+rotation = 1.5708
+
+[node name="Area2D76" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3749, 230)
+rotation = 1.5708
+
+[node name="Area2D77" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3799, 230)
+rotation = 1.5708
+
+[node name="Area2D78" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3849, 230)
+rotation = 1.5708
+
+[node name="Area2D79" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3899, 230)
+rotation = 1.5708
+
+[node name="Area2D87" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3657, 490)
+rotation = 1.5708
+
+[node name="Area2D88" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3707, 490)
+rotation = 1.5708
+
+[node name="Area2D89" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3757, 490)
+rotation = 1.5708
+
+[node name="Area2D90" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3807, 490)
+rotation = 1.5708
+
+[node name="Area2D91" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3857, 490)
+rotation = 1.5708
+
+[node name="Area2D92" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3907, 490)
+rotation = 1.5708
+
+[node name="Area2D383" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29519, 253)
+rotation = 1.5708
+
+[node name="Area2D384" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29569, 253)
+rotation = 1.5708
+
+[node name="Area2D385" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29619, 253)
+rotation = 1.5708
+
+[node name="Area2D386" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29669, 253)
+rotation = 1.5708
+
+[node name="Area2D387" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29719, 253)
+rotation = 1.5708
+
+[node name="Area2D388" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29769, 253)
+rotation = 1.5708
+
+[node name="Area2D389" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29527, 513)
+rotation = 1.5708
+
+[node name="Area2D390" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29577, 513)
+rotation = 1.5708
+
+[node name="Area2D391" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29627, 513)
+rotation = 1.5708
+
+[node name="Area2D392" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29677, 513)
+rotation = 1.5708
+
+[node name="Area2D393" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29727, 513)
+rotation = 1.5708
+
+[node name="Area2D394" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(29777, 513)
+rotation = 1.5708
+
+[node name="Area2D15" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 225)
+
+[node name="Area2D16" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 495)
+
+[node name="Area2D17" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 545)
+
+[node name="Area2D18" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 595)
+
+[node name="Area2D19" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 645)
+
+[node name="Area2D20" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(3172, 695)
+
+[node name="Area2D26" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 27)
+
+[node name="Area2D27" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 77)
+
+[node name="Area2D31" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 274)
+
+[node name="Area2D32" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 324)
+
+[node name="Area2D33" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 374)
+
+[node name="Area2D41" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4430, 351)
+rotation = 1.5708
+
+[node name="Area2D42" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4480, 351)
+rotation = 1.5708
+
+[node name="Area2D43" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4530, 351)
+rotation = 1.5708
+
+[node name="Area2D44" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4580, 351)
+rotation = 1.5708
+
+[node name="Area2D45" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4630, 351)
+rotation = 1.5708
+
+[node name="Area2D46" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4680, 351)
+rotation = 1.5708
+
+[node name="Area2D47" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4730, 351)
+rotation = 1.5708
+
+[node name="Area2D48" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4780, 351)
+rotation = 1.5708
+
+[node name="Area2D49" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4830, 351)
+rotation = 1.5708
+
+[node name="Area2D50" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4880, 351)
+rotation = 1.5708
+
+[node name="Area2D51" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4930, 351)
+rotation = 1.5708
+
+[node name="Area2D52" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4980, 351)
+rotation = 1.5708
+
+[node name="Area2D53" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5030, 351)
+rotation = 1.5708
+
+[node name="Area2D54" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5080, 351)
+rotation = 1.5708
+
+[node name="Area2D55" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5130, 351)
+rotation = 1.5708
+
+[node name="Area2D56" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5180, 351)
+rotation = 1.5708
+
+[node name="Area2D57" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5230, 351)
+rotation = 1.5708
+
+[node name="Area2D58" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5280, 351)
+rotation = 1.5708
+
+[node name="Area2D59" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5330, 351)
+rotation = 1.5708
+
+[node name="Area2D60" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5380, 351)
+rotation = 1.5708
+
+[node name="Area2D61" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5430, 351)
+rotation = 1.5708
+
+[node name="Area2D62" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5480, 351)
+rotation = 1.5708
+
+[node name="Area2D63" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5530, 351)
+rotation = 1.5708
+
+[node name="Area2D64" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5580, 351)
+rotation = 1.5708
+
+[node name="Area2D65" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5630, 351)
+rotation = 1.5708
+
+[node name="Area2D66" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5680, 351)
+rotation = 1.5708
+
+[node name="Area2D67" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5730, 351)
+rotation = 1.5708
+
+[node name="Area2D211" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5780, 351)
+rotation = 1.5708
+
+[node name="Area2D212" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(5830, 351)
+rotation = 1.5708
+
+[node name="Area2D68" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7690, 334)
+rotation = 1.5708
+
+[node name="Area2D213" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7740, 334)
+rotation = 1.5708
+
+[node name="Area2D217" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7790, 334)
+rotation = 1.5708
+
+[node name="Area2D218" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7840, 334)
+rotation = 1.5708
+
+[node name="Area2D219" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7890, 334)
+rotation = 1.5708
+
+[node name="Area2D227" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7940, 334)
+rotation = 1.5708
+
+[node name="Area2D228" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7990, 334)
+rotation = 1.5708
+
+[node name="Area2D229" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(8040, 334)
+rotation = 1.5708
+
+[node name="Area2D232" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(8090, 334)
+rotation = 1.5708
+
+[node name="Area2D233" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(8140, 334)
+rotation = 1.5708
+
+[node name="Area2D234" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(8190, 334)
+rotation = 1.5708
+
+[node name="Area2D235" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(8240, 334)
+rotation = 1.5708
+
+[node name="Area2D236" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(8290, 334)
+rotation = 1.5708
+
+[node name="Area2D237" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(8340, 334)
+rotation = 1.5708
+
+[node name="Area2D248" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9385, 318)
+rotation = 1.57079
+
+[node name="Area2D249" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9435, 318)
+rotation = 1.57079
+
+[node name="Area2D250" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9485, 318)
+rotation = 1.57079
+
+[node name="Area2D251" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9535, 318)
+rotation = 1.57079
+
+[node name="Area2D252" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9585, 318)
+rotation = 1.57079
+
+[node name="Area2D253" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9635, 318)
+rotation = 1.57079
+
+[node name="Area2D254" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9685, 318)
+rotation = 1.5708
+
+[node name="Area2D255" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9735, 318)
+rotation = 1.5708
+
+[node name="Area2D256" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9785, 318)
+rotation = 1.5708
+
+[node name="Area2D257" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9835, 318)
+rotation = 1.5708
+
+[node name="Area2D258" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9885, 318)
+rotation = 1.5708
+
+[node name="Area2D259" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9935, 318)
+rotation = 1.5708
+
+[node name="Area2D260" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9985, 318)
+rotation = 1.5708
+
+[node name="Area2D261" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10035, 318)
+rotation = 1.5708
+
+[node name="Area2D262" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10085, 318)
+rotation = 1.5708
+
+[node name="Area2D263" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(10135, 318)
+rotation = 1.5708
+
+[node name="Area2D264" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12192, 577)
+rotation = 1.5708
+
+[node name="Area2D265" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12242, 577)
+rotation = 1.5708
+
+[node name="Area2D266" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12292, 577)
+rotation = 1.5708
+
+[node name="Area2D267" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12342, 577)
+rotation = 1.5708
+
+[node name="Area2D268" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12392, 577)
+rotation = 1.5708
+
+[node name="Area2D269" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12442, 577)
+rotation = 1.5708
+
+[node name="Area2D270" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12492, 577)
+rotation = 1.5708
+
+[node name="Area2D271" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12542, 577)
+rotation = 1.5708
+
+[node name="Area2D272" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12592, 577)
+rotation = 1.5708
+
+[node name="Area2D273" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(12642, 577)
+rotation = 1.5708
+
+[node name="Area2D274" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15382, 413)
+rotation = 1.5708
+
+[node name="Area2D275" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15432, 413)
+rotation = 1.5708
+
+[node name="Area2D276" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15482, 413)
+rotation = 1.5708
+
+[node name="Area2D277" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15532, 413)
+rotation = 1.5708
+
+[node name="Area2D278" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15582, 413)
+rotation = 1.5708
+
+[node name="Area2D279" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15632, 413)
+rotation = 1.5708
+
+[node name="Area2D280" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15682, 413)
+rotation = 1.5708
+
+[node name="Area2D281" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15732, 413)
+rotation = 1.5708
+
+[node name="Area2D282" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15782, 413)
+rotation = 1.5708
+
+[node name="Area2D283" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(15832, 413)
+rotation = 1.5708
+
+[node name="Area2D34" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 424)
+
+[node name="Area2D38" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 622)
+
+[node name="Area2D39" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 672)
+
+[node name="Area2D40" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(4389, 722)
+
+[node name="Area2D315" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(22393, 277)
+
+[node name="Area2D316" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(22393, 180)
+
+[node name="Area2D317" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(22393, 229)
+
+[node name="Area2D318" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21653, 283)
+rotation = 1.5708
+
+[node name="Area2D319" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21703, 283)
+rotation = 1.5708
+
+[node name="Area2D320" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21753, 283)
+rotation = 1.5708
+
+[node name="Area2D321" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21803, 283)
+rotation = 1.5708
+
+[node name="Area2D322" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21853, 283)
+rotation = 1.5708
+
+[node name="Area2D323" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21903, 283)
+rotation = 1.5708
+
+[node name="Area2D324" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21661, 543)
+rotation = 1.5708
+
+[node name="Area2D325" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21711, 543)
+rotation = 1.5708
+
+[node name="Area2D326" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21761, 543)
+rotation = 1.5708
+
+[node name="Area2D327" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21811, 543)
+rotation = 1.5708
+
+[node name="Area2D328" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21861, 543)
+rotation = 1.5708
+
+[node name="Area2D329" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21911, 543)
+rotation = 1.5708
+
+[node name="Area2D330" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 80)
+
+[node name="Area2D331" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 130)
+
+[node name="Area2D332" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 327)
+
+[node name="Area2D333" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 377)
+
+[node name="Area2D334" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 427)
+
+[node name="Area2D335" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22434, 404)
+rotation = 1.5708
+
+[node name="Area2D336" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22484, 404)
+rotation = 1.5708
+
+[node name="Area2D337" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22534, 404)
+rotation = 1.5708
+
+[node name="Area2D338" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22584, 404)
+rotation = 1.5708
+
+[node name="Area2D339" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22634, 404)
+rotation = 1.5708
+
+[node name="Area2D340" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22684, 404)
+rotation = 1.5708
+
+[node name="Area2D341" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22734, 404)
+rotation = 1.5708
+
+[node name="Area2D342" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22784, 404)
+rotation = 1.5708
+
+[node name="Area2D343" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22834, 404)
+rotation = 1.5708
+
+[node name="Area2D344" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22884, 404)
+rotation = 1.5708
+
+[node name="Area2D345" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22934, 404)
+rotation = 1.5708
+
+[node name="Area2D346" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22984, 404)
+rotation = 1.5708
+
+[node name="Area2D347" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23034, 404)
+rotation = 1.5708
+
+[node name="Area2D348" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23084, 404)
+rotation = 1.5708
+
+[node name="Area2D349" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23134, 404)
+rotation = 1.5708
+
+[node name="Area2D350" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23184, 404)
+rotation = 1.5708
+
+[node name="Area2D351" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23234, 404)
+rotation = 1.5708
+
+[node name="Area2D352" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23284, 404)
+rotation = 1.5708
+
+[node name="Area2D353" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23334, 404)
+rotation = 1.5708
+
+[node name="Area2D354" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23384, 404)
+rotation = 1.5708
+
+[node name="Area2D355" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23434, 404)
+rotation = 1.5708
+
+[node name="Area2D356" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23484, 404)
+rotation = 1.5708
+
+[node name="Area2D357" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23534, 404)
+rotation = 1.5708
+
+[node name="Area2D358" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23584, 404)
+rotation = 1.5708
+
+[node name="Area2D359" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23634, 404)
+rotation = 1.5708
+
+[node name="Area2D360" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23684, 404)
+rotation = 1.5708
+
+[node name="Area2D361" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23734, 404)
+rotation = 1.5708
+
+[node name="Area2D362" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23784, 404)
+rotation = 1.5708
+
+[node name="Area2D363" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(23834, 404)
+rotation = 1.5708
+
+[node name="Area2D364" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 477)
+
+[node name="Area2D365" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 675)
+
+[node name="Area2D366" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 725)
+
+[node name="Area2D367" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(22393, 775)
+
+[node name="Area2D35" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 9)
+
+[node name="Area2D36" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 59)
+
+[node name="Area2D71" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 256)
+
+[node name="Area2D93" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9344, 318)
+
+[node name="Area2D94" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9344, 368)
+
+[node name="Area2D95" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9344, 418)
+
+[node name="Area2D96" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9344, 268)
+
+[node name="Area2D97" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9344, 218)
+
+[node name="Area2D98" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9344, 168)
+
+[node name="Area2D99" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(9344, 468)
+
+[node name="Area2D153" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(21077, 397)
+
+[node name="Area2D154" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(21077, 300)
+
+[node name="Area2D155" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(21077, 349)
+
+[node name="Area2D156" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(21077, 250)
+
+[node name="Area2D157" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(21077, 153)
+
+[node name="Area2D158" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(21077, 103)
+
+[node name="Area2D159" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(21077, 202)
+
+[node name="Area2D160" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20101, 143)
+
+[node name="Area2D161" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20101, 193)
+
+[node name="Area2D162" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20101, 243)
+
+[node name="Area2D163" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20101, 293)
+
+[node name="Area2D164" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20101, 343)
+
+[node name="Area2D165" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20104, 389)
+
+[node name="Area2D166" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20104, 439)
+
+[node name="Area2D189" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20104, 489)
+
+[node name="Area2D190" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20104, 539)
+
+[node name="Area2D195" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(20104, 589)
+
+[node name="Area2D196" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 695)
+
+[node name="Area2D197" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 745)
+
+[node name="Area2D198" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 795)
+
+[node name="Area2D246" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 845)
+
+[node name="Area2D247" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 895)
+
+[node name="Area2D422" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 943)
+
+[node name="Area2D423" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 993)
+
+[node name="Area2D424" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 1043)
+
+[node name="Area2D284" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 447)
+
+[node name="Area2D285" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 497)
+
+[node name="Area2D286" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 547)
+
+[node name="Area2D287" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 597)
+
+[node name="Area2D288" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21077, 647)
+
+[node name="Area2D289" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21075, -48)
+isDestructible = true
+
+[node name="Area2D290" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21075, 2)
+isDestructible = true
+
+[node name="Area2D291" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(21075, 52)
+isDestructible = true
+
+[node name="Area2D292" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18730, 410)
+rotation = 1.57079
+
+[node name="Area2D293" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18780, 410)
+rotation = 1.57079
+
+[node name="Area2D294" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18830, 410)
+rotation = 1.57079
+
+[node name="Area2D295" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18880, 410)
+rotation = 1.57079
+
+[node name="Area2D296" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18930, 410)
+rotation = 1.57079
+
+[node name="Area2D297" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18980, 410)
+rotation = 1.57079
+
+[node name="Area2D298" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19030, 410)
+rotation = 1.5708
+
+[node name="Area2D299" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19080, 410)
+rotation = 1.5708
+
+[node name="Area2D300" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19130, 410)
+rotation = 1.5708
+
+[node name="Area2D301" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19180, 410)
+rotation = 1.5708
+
+[node name="Area2D302" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19230, 410)
+rotation = 1.5708
+
+[node name="Area2D303" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19280, 410)
+rotation = 1.5708
+
+[node name="Area2D304" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19330, 410)
+rotation = 1.5708
+
+[node name="Area2D305" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19380, 410)
+rotation = 1.5708
+
+[node name="Area2D306" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19430, 410)
+rotation = 1.5708
+
+[node name="Area2D307" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(19480, 410)
+rotation = 1.5708
+
+[node name="Area2D308" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18689, 410)
+
+[node name="Area2D309" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18689, 460)
+
+[node name="Area2D310" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18689, 510)
+
+[node name="Area2D311" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18689, 360)
+
+[node name="Area2D312" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18689, 310)
+
+[node name="Area2D313" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18689, 260)
+
+[node name="Area2D314" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18689, 560)
+
+[node name="Area2D72" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 306)
+
+[node name="Area2D73" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 356)
+
+[node name="Area2D80" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 406)
+
+[node name="Area2D81" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 604)
+
+[node name="Area2D82" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 654)
+
+[node name="Area2D83" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(7649, 704)
+
+[node name="Area2D187" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17358, 11)
+
+[node name="Area2D188" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17358, 62)
+
+[node name="Area2D191" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17360, 207)
+
+[node name="Area2D192" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17360, 251)
+
+[node name="Area2D193" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17360, 302)
+
+[node name="Area2D194" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17361, 351)
+
+[node name="Area2D199" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17363, 591)
+
+[node name="Area2D200" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17364, 639)
+
+[node name="Area2D201" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17364, 687)
+
+[node name="Area2D202" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17366, 736)
+
+[node name="Area2D203" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17366, 787)
+isDestructible = true
+
+[node name="Area2D204" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17367, 836)
+isDestructible = true
+
+[node name="Area2D205" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17368, 884)
+
+[node name="Area2D206" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(17368, 932)
+
+[node name="Area2D207" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18017, 11)
+
+[node name="Area2D208" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18017, 62)
+
+[node name="Area2D209" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18018, 111)
+
+[node name="Area2D210" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18019, 159)
+
+[node name="Area2D214" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18029, 856)
+
+[node name="Area2D215" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18030, 904)
+
+[node name="Area2D216" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18030, 952)
+
+[node name="Area2D220" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18021, 379)
+
+[node name="Area2D221" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18021, 427)
+
+[node name="Area2D222" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18021, 469)
+
+[node name="Area2D223" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18021, 520)
+
+[node name="Area2D224" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18022, 569)
+
+[node name="Area2D225" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18023, 617)
+
+[node name="Area2D226" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18023, 665)
+
+[node name="Area2D230" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18027, 859)
+
+[node name="Area2D231" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(18027, 907)
+
+[node name="Area2D21" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(3172, 450)
+
+[node name="Area2D22" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(3172, 400)
+
+[node name="Area2D23" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(3172, 350)
+
+[node name="Area2D24" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(3172, 250)
+
+[node name="Area2D25" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(3172, 300)
+
+[node name="Area2D147" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(17363, 541)
+
+[node name="Area2D148" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(17363, 491)
+
+[node name="Area2D149" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(17363, 441)
+
+[node name="Area2D150" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(17362, 391)
+
+[node name="Area2D151" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(17360, 157)
+
+[node name="Area2D152" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("11_deirw")]
+position = Vector2(17359, 107)
+
+[node name="Area2D368" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27316, 352)
+
+[node name="Area2D369" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27316, 302)
+
+[node name="Area2D370" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27316, 402)
+
+[node name="Area2D371" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27316, 452)
+
+[node name="Area2D372" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27316, 252)
+
+[node name="Area2D373" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27316, 202)
+
+[node name="Area2D374" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27316, 502)
+
+[node name="Area2D375" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27357, 353)
+rotation = 1.5708
+
+[node name="Area2D376" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27407, 353)
+rotation = 1.5708
+
+[node name="Area2D377" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27457, 353)
+rotation = 1.5708
+
+[node name="Area2D378" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27507, 353)
+rotation = 1.5708
+
+[node name="Area2D379" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27557, 353)
+rotation = 1.5708
+
+[node name="Area2D380" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27607, 353)
+rotation = 1.5708
+
+[node name="Area2D381" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27657, 353)
+rotation = 1.5708
+
+[node name="Area2D382" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(27707, 353)
+rotation = 1.5708
+
+[node name="Area2D395" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32739, 277)
+rotation = 1.5708
+
+[node name="Area2D396" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32789, 277)
+rotation = 1.5708
+
+[node name="Area2D397" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32839, 277)
+rotation = 1.5708
+
+[node name="Area2D398" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32889, 277)
+rotation = 1.5708
+
+[node name="Area2D399" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32939, 277)
+rotation = 1.5708
+
+[node name="Area2D400" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32989, 277)
+rotation = 1.5708
+
+[node name="Area2D401" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32747, 537)
+rotation = 1.5708
+
+[node name="Area2D402" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32797, 537)
+rotation = 1.5708
+
+[node name="Area2D403" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32847, 537)
+rotation = 1.5708
+
+[node name="Area2D404" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32897, 537)
+rotation = 1.5708
+
+[node name="Area2D405" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32947, 537)
+rotation = 1.5708
+
+[node name="Area2D406" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(32997, 537)
+rotation = 1.5708
+
+[node name="Area2D407" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30536, 376)
+
+[node name="Area2D408" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30536, 326)
+
+[node name="Area2D409" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30536, 426)
+
+[node name="Area2D410" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30536, 476)
+
+[node name="Area2D411" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30536, 276)
+
+[node name="Area2D412" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30536, 226)
+
+[node name="Area2D413" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30536, 526)
+
+[node name="Area2D414" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30577, 377)
+rotation = 1.5708
+
+[node name="Area2D415" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30627, 377)
+rotation = 1.5708
+
+[node name="Area2D416" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30677, 377)
+rotation = 1.5708
+
+[node name="Area2D417" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30727, 377)
+rotation = 1.5708
+
+[node name="Area2D418" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30777, 377)
+rotation = 1.5708
+
+[node name="Area2D419" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30827, 377)
+rotation = 1.5708
+
+[node name="Area2D420" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30877, 377)
+rotation = 1.5708
+
+[node name="Area2D421" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(30927, 377)
+rotation = 1.5708
+
+[node name="Area2D425" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35837, 322)
+rotation = 1.5708
+
+[node name="Area2D426" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35887, 322)
+rotation = 1.5708
+
+[node name="Area2D427" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35937, 322)
+rotation = 1.5708
+
+[node name="Area2D428" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35987, 322)
+rotation = 1.5708
+
+[node name="Area2D429" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(36037, 322)
+rotation = 1.5708
+
+[node name="Area2D430" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(36087, 322)
+rotation = 1.5708
+
+[node name="Area2D431" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35845, 582)
+rotation = 1.5708
+
+[node name="Area2D432" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35895, 582)
+rotation = 1.5708
+
+[node name="Area2D433" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35945, 582)
+rotation = 1.5708
+
+[node name="Area2D434" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(35995, 582)
+rotation = 1.5708
+
+[node name="Area2D435" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(36045, 582)
+rotation = 1.5708
+
+[node name="Area2D436" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(36095, 582)
+rotation = 1.5708
+
+[node name="Area2D437" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33634, 421)
+
+[node name="Area2D438" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33634, 371)
+
+[node name="Area2D439" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33634, 471)
+
+[node name="Area2D440" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33634, 521)
+
+[node name="Area2D441" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33634, 321)
+
+[node name="Area2D442" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33634, 271)
+
+[node name="Area2D443" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33634, 571)
+
+[node name="Area2D444" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33675, 422)
+rotation = 1.5708
+
+[node name="Area2D445" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33725, 422)
+rotation = 1.5708
+
+[node name="Area2D446" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33775, 422)
+rotation = 1.5708
+
+[node name="Area2D447" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33825, 422)
+rotation = 1.5708
+
+[node name="Area2D448" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33875, 422)
+rotation = 1.5708
+
+[node name="Area2D449" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33925, 422)
+rotation = 1.5708
+
+[node name="Area2D450" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(33975, 422)
+rotation = 1.5708
+
+[node name="Area2D451" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("4_0b4bj")]
+position = Vector2(34025, 422)
+rotation = 1.5708
+
+[node name="EnemiesContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="BossPositions" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("4_080jy")]
+
+[node name="Enemy1" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(2953, 326)
+
+[node name="Enemy28" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(9930, 96)
+
+[node name="Enemy29" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(9940, 521)
+
+[node name="Enemy12" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(6837, 287)
+
+[node name="Enemy17" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(6840, 411)
+
+[node name="Enemy13" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(6851, 558)
+
+[node name="Enemy16" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(6838, 136)
+
+[node name="Enemy30" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(7464, 129)
+
+[node name="Enemy31" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(7461, 535)
+
+[node name="Boss" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("9_urhq7")]
+position = Vector2(26749, 601)
+
+[node name="Enemy2" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(6728, 489)
+
+[node name="Enemy4" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(6734, 213)
+
+[node name="Enemy6" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(13810, 143)
+
+[node name="Enemy7" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(13783, 597)
+
+[node name="Enemy14" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(11336, 583)
+
+[node name="Enemy34" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(19275, 188)
+
+[node name="Enemy35" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(19285, 613)
+
+[node name="Enemy36" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(20681, 675)
+
+[node name="Enemy15" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(13713, 357)
+
+[node name="Enemy32" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(15819, 261)
+
+[node name="Enemy33" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(15840, 575)
+
+[node name="Enemy18" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("13_uwu7r")]
+position = Vector2(14631, 421)
+
+[node name="Enemy19" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(16895, 181)
+
+[node name="Enemy20" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(16892, 348)
+
+[node name="Enemy21" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(16888, 479)
+
+[node name="Enemy25" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(16890, 671)
+
+[node name="Enemy22" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(16800, 166)
+
+[node name="Enemy23" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(16813, 417)
+
+[node name="Enemy24" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(16816, 655)
+
+[node name="Enemy26" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("13_uwu7r")]
+position = Vector2(16985, 329)
+
+[node name="Enemy41" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("13_uwu7r")]
+position = Vector2(12406, 379)
+
+[node name="Enemy42" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("13_uwu7r")]
+position = Vector2(20665, 428)
+
+[node name="Enemy27" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("13_uwu7r")]
+position = Vector2(16977, 580)
+
+[node name="Enemy3" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(4290, 361)
+
+[node name="Enemy37" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(24841, 340)
+
+[node name="Enemy38" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(24844, 464)
+
+[node name="Enemy39" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(24855, 611)
+
+[node name="Enemy40" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_725qs")]
+position = Vector2(24842, 189)
+
+[node name="Enemy8" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(24732, 542)
+
+[node name="Enemy9" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(24738, 266)
+
+[node name="Enemy10" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(22294, 414)
+
+[node name="Enemy5" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("12_8j3b8")]
+position = Vector2(9013, 327)
+
+[node name="ForeGround" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+z_index = 4
+motion_mirroring = Vector2(1195, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
+texture = ExtResource("5_amavy")
+centered = false
+offset = Vector2(0, 646)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
+position = Vector2(1195, 0)
+texture = ExtResource("5_amavy")
+centered = false
+offset = Vector2(0, 646)

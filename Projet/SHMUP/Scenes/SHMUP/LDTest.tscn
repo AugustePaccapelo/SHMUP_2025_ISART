@@ -1,0 +1,659 @@
+[gd_scene load_steps=15 format=3 uid="uid://1ukfqv8mpt0q"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/Managers/LDTestManager.cs" id="1_5jja7"]
+[ext_resource type="Texture2D" uid="uid://crdtrook0hjuy" path="res://Assets/SHMUP/Texture/Decor/BackGroundpng.png" id="1_373x3"]
+[ext_resource type="Texture2D" uid="uid://bfds56m8eqyke" path="res://Assets/SHMUP/Texture/Decor/Horizon.png" id="2_5stmt"]
+[ext_resource type="Texture2D" uid="uid://csqm3eyog8okw" path="res://Assets/SHMUP/Texture/Decor/Middlepng.png" id="3_be4ig"]
+[ext_resource type="Texture2D" uid="uid://xhytntpa6bfw" path="res://Assets/SHMUP/Texture/Decor/ForeGround.png" id="4_6fgrp"]
+[ext_resource type="PackedScene" uid="uid://dbpglfddkgb7u" path="res://Scenes/SHMUP/GameObjects/Collectibles/Upgrade.tscn" id="5_1bq6g"]
+[ext_resource type="PackedScene" uid="uid://b0vee3sk5ksn7" path="res://Scenes/SHMUP/GameObjects/Collectibles/Health.tscn" id="5_t36g4"]
+[ext_resource type="PackedScene" uid="uid://dmlb2mg1ddoyy" path="res://Scenes/SHMUP/GameObjects/Obstacle.tscn" id="5_wp3dc"]
+[ext_resource type="PackedScene" uid="uid://ccg6sgr5n0yqm" path="res://Scenes/SHMUP/GameObjects/Collectibles/SmartBomb.tscn" id="6_1m5mr"]
+[ext_resource type="PackedScene" uid="uid://nqupybbt215c" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Boss.tscn" id="6_16tf3"]
+[ext_resource type="PackedScene" uid="uid://df7lcu7flrsw4" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/BossPositions.tscn" id="6_ipawo"]
+[ext_resource type="PackedScene" uid="uid://c84yt4ypfouui" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Enemy2.tscn" id="7_8el0j"]
+[ext_resource type="PackedScene" uid="uid://bruki2e6mr2es" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Enemy1.tscn" id="8_kai5u"]
+[ext_resource type="PackedScene" uid="uid://c8maf53415ser" path="res://Scenes/SHMUP/GameObjects/Movables/Characters/Enemies/Enemy3.tscn" id="9_03uxk"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5jja7")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BackGround" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+texture = ExtResource("1_373x3")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+position = Vector2(1280, 0)
+texture = ExtResource("1_373x3")
+centered = false
+
+[node name="Horizon" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+motion_mirroring = Vector2(1147, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Horizon"]
+texture = ExtResource("2_5stmt")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Horizon"]
+position = Vector2(1147, 0)
+texture = ExtResource("2_5stmt")
+centered = false
+
+[node name="Middle" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 2
+motion_mirroring = Vector2(996, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Middle"]
+texture = ExtResource("3_be4ig")
+centered = false
+offset = Vector2(0, 236)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Middle"]
+position = Vector2(996, 0)
+texture = ExtResource("3_be4ig")
+centered = false
+offset = Vector2(0, 236)
+
+[node name="GameLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="GameContainer" type="Node2D" parent="ParallaxBackground/GameLayer"]
+z_index = 3
+
+[node name="AmmoContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="CollectiblesContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="Upgrade" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(123, 658)
+
+[node name="Upgrade2" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(327, 661)
+
+[node name="Upgrade3" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(549, 661)
+
+[node name="Upgrade4" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(783, 661)
+
+[node name="Upgrade5" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(1025, 650)
+
+[node name="Upgrade6" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(1229, 653)
+
+[node name="Upgrade7" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(1451, 653)
+
+[node name="Upgrade8" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(1685, 653)
+
+[node name="Upgrade9" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(1910, 653)
+
+[node name="Upgrade10" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(2114, 656)
+
+[node name="Upgrade11" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(2336, 656)
+
+[node name="Upgrade12" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(2570, 656)
+
+[node name="Upgrade13" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(2812, 645)
+
+[node name="Upgrade14" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(3016, 648)
+
+[node name="Upgrade15" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(3238, 648)
+
+[node name="Upgrade16" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(3472, 648)
+
+[node name="Upgrade17" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(3714, 647)
+
+[node name="Upgrade18" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(3918, 650)
+
+[node name="Upgrade19" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(4140, 650)
+
+[node name="Upgrade20" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(4374, 650)
+
+[node name="Upgrade21" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(4616, 639)
+
+[node name="Upgrade22" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(4820, 642)
+
+[node name="Upgrade23" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(5042, 642)
+
+[node name="Upgrade24" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(5276, 642)
+
+[node name="Upgrade25" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(5501, 642)
+
+[node name="Upgrade26" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(5705, 645)
+
+[node name="Upgrade27" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(5927, 645)
+
+[node name="Upgrade28" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(6161, 645)
+
+[node name="Upgrade29" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(6403, 634)
+
+[node name="Upgrade30" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(6607, 637)
+
+[node name="Upgrade31" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(6829, 637)
+
+[node name="Upgrade32" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(7063, 637)
+
+[node name="Upgrade33" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(7312, 639)
+
+[node name="Upgrade34" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(7516, 642)
+
+[node name="Upgrade35" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(7738, 642)
+
+[node name="Upgrade36" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(7972, 642)
+
+[node name="Upgrade37" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(8214, 631)
+
+[node name="Upgrade38" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(8418, 634)
+
+[node name="Upgrade39" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(8640, 634)
+
+[node name="Upgrade40" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(8874, 634)
+
+[node name="Upgrade41" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(9099, 634)
+
+[node name="Upgrade42" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(9303, 637)
+
+[node name="Upgrade43" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(9525, 637)
+
+[node name="Upgrade44" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(9759, 637)
+
+[node name="Upgrade45" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(10001, 626)
+
+[node name="Upgrade46" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(10205, 629)
+
+[node name="Upgrade47" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(10427, 629)
+
+[node name="Upgrade48" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(10661, 629)
+
+[node name="Upgrade49" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(10903, 628)
+
+[node name="Upgrade50" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(11107, 631)
+
+[node name="Upgrade51" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(11329, 631)
+
+[node name="Upgrade52" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(11563, 631)
+
+[node name="Upgrade53" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(11805, 620)
+
+[node name="Upgrade54" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(12009, 623)
+
+[node name="Upgrade55" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(12231, 623)
+
+[node name="Upgrade56" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(12465, 623)
+
+[node name="Upgrade57" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(12690, 623)
+
+[node name="Upgrade58" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(12894, 626)
+
+[node name="Upgrade59" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(13116, 626)
+
+[node name="Upgrade60" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(13350, 626)
+
+[node name="Upgrade61" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(13592, 615)
+
+[node name="Upgrade62" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(13796, 618)
+
+[node name="Upgrade63" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(14018, 618)
+
+[node name="Upgrade64" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_1bq6g")]
+position = Vector2(14252, 618)
+
+[node name="Health" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(54, 47)
+
+[node name="SmartBomb" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(159, 49)
+
+[node name="Health2" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(266, 49)
+
+[node name="SmartBomb2" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(371, 51)
+
+[node name="Health3" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(478, 53)
+
+[node name="SmartBomb3" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(583, 55)
+
+[node name="Health4" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(690, 55)
+
+[node name="SmartBomb4" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(795, 57)
+
+[node name="Health5" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(900, 60)
+
+[node name="SmartBomb5" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(1005, 62)
+
+[node name="Health6" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(1112, 62)
+
+[node name="SmartBomb6" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(1217, 64)
+
+[node name="Health7" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(1324, 66)
+
+[node name="SmartBomb7" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(1429, 68)
+
+[node name="Health8" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(1536, 68)
+
+[node name="SmartBomb8" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(1641, 70)
+
+[node name="Health9" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(1747, 68)
+
+[node name="SmartBomb9" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(1852, 70)
+
+[node name="Health10" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(1959, 70)
+
+[node name="SmartBomb10" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(2064, 72)
+
+[node name="Health11" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(2171, 74)
+
+[node name="SmartBomb11" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(2276, 76)
+
+[node name="Health12" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(2383, 76)
+
+[node name="SmartBomb12" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(2488, 78)
+
+[node name="Health13" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(2593, 81)
+
+[node name="SmartBomb13" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(2698, 83)
+
+[node name="Health14" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(2805, 83)
+
+[node name="SmartBomb14" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(2910, 85)
+
+[node name="Health15" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(3017, 87)
+
+[node name="SmartBomb15" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(3122, 89)
+
+[node name="Health16" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(3229, 89)
+
+[node name="SmartBomb16" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(3334, 91)
+
+[node name="Health17" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(3454, 60)
+
+[node name="SmartBomb17" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(3559, 62)
+
+[node name="Health18" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(3666, 62)
+
+[node name="SmartBomb18" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(3771, 64)
+
+[node name="Health19" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(3878, 66)
+
+[node name="SmartBomb19" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(3983, 68)
+
+[node name="Health20" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(4090, 68)
+
+[node name="SmartBomb20" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(4195, 70)
+
+[node name="Health21" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(4300, 73)
+
+[node name="SmartBomb21" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(4405, 75)
+
+[node name="Health22" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(4512, 75)
+
+[node name="SmartBomb22" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(4617, 77)
+
+[node name="Health23" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(4724, 79)
+
+[node name="SmartBomb23" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(4829, 81)
+
+[node name="Health24" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(4936, 81)
+
+[node name="SmartBomb24" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(5041, 83)
+
+[node name="Health25" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(5147, 81)
+
+[node name="SmartBomb25" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(5252, 83)
+
+[node name="Health26" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(5359, 83)
+
+[node name="SmartBomb26" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(5464, 85)
+
+[node name="Health27" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(5571, 87)
+
+[node name="SmartBomb27" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(5676, 89)
+
+[node name="Health28" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(5783, 89)
+
+[node name="SmartBomb28" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(5888, 91)
+
+[node name="Health29" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(5993, 94)
+
+[node name="SmartBomb29" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(6098, 96)
+
+[node name="Health30" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(6205, 96)
+
+[node name="SmartBomb30" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(6310, 98)
+
+[node name="Health31" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(6417, 100)
+
+[node name="SmartBomb31" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(6522, 102)
+
+[node name="Health32" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(6629, 102)
+
+[node name="SmartBomb32" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(6734, 104)
+
+[node name="Health33" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(6858, 92)
+
+[node name="SmartBomb33" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(6963, 94)
+
+[node name="Health34" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(7070, 94)
+
+[node name="SmartBomb34" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(7175, 96)
+
+[node name="Health35" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(7282, 98)
+
+[node name="SmartBomb35" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(7387, 100)
+
+[node name="Health36" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(7494, 100)
+
+[node name="SmartBomb36" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(7599, 102)
+
+[node name="Health37" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(7704, 105)
+
+[node name="SmartBomb37" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(7809, 107)
+
+[node name="Health38" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(7916, 107)
+
+[node name="SmartBomb38" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(8021, 109)
+
+[node name="Health39" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(8128, 111)
+
+[node name="SmartBomb39" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(8233, 113)
+
+[node name="Health40" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(8340, 113)
+
+[node name="SmartBomb40" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(8445, 115)
+
+[node name="Health41" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(8551, 113)
+
+[node name="SmartBomb41" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(8656, 115)
+
+[node name="Health42" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(8763, 115)
+
+[node name="SmartBomb42" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(8868, 117)
+
+[node name="Health43" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(8975, 119)
+
+[node name="SmartBomb43" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(9080, 121)
+
+[node name="Health44" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(9187, 121)
+
+[node name="SmartBomb44" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(9292, 123)
+
+[node name="Health45" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(9397, 126)
+
+[node name="SmartBomb45" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(9502, 128)
+
+[node name="Health46" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(9609, 128)
+
+[node name="SmartBomb46" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(9714, 130)
+
+[node name="Health47" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(9821, 132)
+
+[node name="SmartBomb47" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(9926, 134)
+
+[node name="Health48" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("5_t36g4")]
+position = Vector2(10033, 134)
+
+[node name="SmartBomb48" parent="ParallaxBackground/GameLayer/GameContainer/CollectiblesContainer" instance=ExtResource("6_1m5mr")]
+position = Vector2(10138, 136)
+
+[node name="ObstaclesContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="Area2D" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(2168, 329)
+
+[node name="Area2D5" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(4511, 334)
+isDestructible = true
+
+[node name="Area2D8" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(4514, 278)
+isDestructible = true
+
+[node name="Area2D9" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(4511, 401)
+isDestructible = true
+
+[node name="Area2D10" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(4516, 205)
+isDestructible = true
+
+[node name="Area2D11" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(4507, 473)
+isDestructible = true
+
+[node name="Area2D12" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(6357, 191)
+isDestructible = true
+
+[node name="Area2D13" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(6361, 250)
+isDestructible = true
+
+[node name="Area2D14" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(6361, 311)
+isDestructible = true
+
+[node name="Area2D15" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(6362, 382)
+isDestructible = true
+
+[node name="Area2D16" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(6360, 451)
+isDestructible = true
+
+[node name="Area2D2" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(2167, 391)
+
+[node name="Area2D3" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(2166, 446)
+
+[node name="Area2D4" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(2167, 510)
+
+[node name="Area2D6" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(2164, 270)
+
+[node name="Area2D7" parent="ParallaxBackground/GameLayer/GameContainer/ObstaclesContainer" instance=ExtResource("5_wp3dc")]
+position = Vector2(2163, 211)
+
+[node name="EnemiesContainer" type="Node2D" parent="ParallaxBackground/GameLayer/GameContainer"]
+
+[node name="BossPositions" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_ipawo")]
+
+[node name="Boss" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("6_16tf3")]
+position = Vector2(9173, 372)
+
+[node name="Enemy4" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("7_8el0j")]
+position = Vector2(2813, 342)
+
+[node name="Enemy5" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("7_8el0j")]
+position = Vector2(3546, 333)
+
+[node name="Enemy6" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("7_8el0j")]
+position = Vector2(4257, 328)
+
+[node name="Enemy1" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("8_kai5u")]
+position = Vector2(1509, 383)
+
+[node name="Enemy2" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("8_kai5u")]
+position = Vector2(1747, 384)
+
+[node name="Enemy3" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("8_kai5u")]
+position = Vector2(2003, 384)
+
+[node name="Enemy7" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("9_03uxk")]
+position = Vector2(4945, 325)
+
+[node name="Enemy8" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("9_03uxk")]
+position = Vector2(5381, 322)
+
+[node name="Enemy9" parent="ParallaxBackground/GameLayer/GameContainer/EnemiesContainer" instance=ExtResource("9_03uxk")]
+position = Vector2(5919, 315)
+
+[node name="ForeGround" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 4
+motion_mirroring = Vector2(1195, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
+texture = ExtResource("4_6fgrp")
+centered = false
+offset = Vector2(0, 646)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
+position = Vector2(1195, 0)
+texture = ExtResource("4_6fgrp")
+centered = false
+offset = Vector2(0, 646)

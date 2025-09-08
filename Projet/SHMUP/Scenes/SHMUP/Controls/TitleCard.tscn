@@ -1,0 +1,214 @@
+[gd_scene load_steps=22 format=3 uid="uid://d3bfd5q4lthhe"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/UI/TitleCard.cs" id="1_5aesx"]
+[ext_resource type="Texture2D" uid="uid://b0ytbv7p26ly" path="res://Assets/SHMUP/Texture/Decor/UIBackGround.png" id="2_0ot46"]
+[ext_resource type="Texture2D" uid="uid://dpgoleyesg14x" path="res://Assets/SHMUP/UserInterface/LOGO-ISART_baselineFR_150DPI_white.png" id="2_kti3i"]
+[ext_resource type="Theme" uid="uid://b1dnohqr48hej" path="res://Assets/SHMUP/UserInterface/ButtonTheme.tres" id="3_8npge"]
+[ext_resource type="PackedScene" uid="uid://ydm4ysirskho" path="res://Scenes/SHMUP/Controls/Settings.tscn" id="3_fycwh"]
+[ext_resource type="PackedScene" uid="uid://c6541ufrgwp8g" path="res://Scenes/SHMUP/Controls/Credits.tscn" id="4_87jfc"]
+[ext_resource type="Texture2D" uid="uid://c8je6ubhssou3" path="res://Assets/SHMUP/UserInterface/Button.png" id="4_exdnc"]
+[ext_resource type="Texture2D" uid="uid://bug7ia3ht42p8" path="res://Assets/SHMUP/UserInterface/ButtonHover.png" id="5_h6srr"]
+[ext_resource type="Texture2D" uid="uid://babyb7pqvme32" path="res://Assets/SHMUP/UserInterface/HelpEnglish.png" id="9_rc6m1"]
+[ext_resource type="Texture2D" uid="uid://ddh084i3q6l2v" path="res://Assets/SHMUP/UserInterface/HelpFrench.png" id="10_dvame"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3d47w"]
+font_size = 64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0vb0"]
+texture = ExtResource("4_exdnc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptt6j"]
+texture = ExtResource("5_h6srr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2h75q"]
+texture = ExtResource("4_exdnc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_led1h"]
+texture = ExtResource("5_h6srr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bf3ay"]
+texture = ExtResource("4_exdnc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cydiy"]
+texture = ExtResource("5_h6srr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knvsc"]
+texture = ExtResource("4_exdnc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojocg"]
+texture = ExtResource("5_h6srr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sgkl"]
+texture = ExtResource("4_exdnc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1xag"]
+texture = ExtResource("5_h6srr")
+
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("vButtonContainer", "playButton", "SettingsButton", "CreditsButton", "QuitButton", "isartLogo", "colorRect", "settings", "credits", "helpEnglish", "helpFrench", "buttonOk")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5aesx")
+vButtonContainer = NodePath("VButtonContainer")
+playButton = NodePath("VButtonContainer/Play")
+SettingsButton = NodePath("VButtonContainer/Settings")
+CreditsButton = NodePath("VButtonContainer/Credits")
+QuitButton = NodePath("VButtonContainer/Quit")
+isartLogo = NodePath("IsartLogo")
+colorRect = NodePath("ColorRect")
+settings = NodePath("Settings")
+credits = NodePath("Credits")
+helpEnglish = NodePath("HelpEnglish")
+helpFrench = NodePath("HelpFrench")
+buttonOk = NodePath("ButtonOk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ot46")
+expand_mode = 1
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -161.0
+offset_right = 161.0
+offset_bottom = 179.0
+grow_horizontal = 2
+text = "
+Blind Gunner"
+label_settings = SubResource("LabelSettings_3d47w")
+
+[node name="VButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -133.5
+offset_right = 68.0
+offset_bottom = 133.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Play" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme = ExtResource("3_8npge")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxTexture_t0vb0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ptt6j")
+text = "Play"
+
+[node name="Settings" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_2h75q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_led1h")
+text = "Settings"
+
+[node name="Credits" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_bf3ay")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cydiy")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_knvsc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ojocg")
+text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[node name="IsartLogo" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 209.0
+offset_top = 170.0
+offset_right = -200.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kti3i")
+
+[node name="Settings" parent="." instance=ExtResource("3_fycwh")]
+visible = false
+layout_mode = 1
+
+[node name="Credits" parent="." instance=ExtResource("4_87jfc")]
+visible = false
+layout_mode = 1
+
+[node name="HelpEnglish" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = 20.0
+offset_right = -202.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_rc6m1")
+expand_mode = 1
+
+[node name="HelpFrench" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = 20.0
+offset_right = -202.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_dvame")
+expand_mode = 1
+
+[node name="ButtonOk" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -108.0
+offset_right = 54.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_1sgkl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h1xag")
+text = "OK"

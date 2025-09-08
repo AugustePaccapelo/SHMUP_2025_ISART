@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://0loxtfvtk4rq"]
+
+[ext_resource type="SpriteFrames" uid="uid://cxhrqwljwa2vd" path="res://Assets/SHMUP/Texture/GameObjects/Movables/Ammos/Bullets/SpriteFramesBullet.tres" id="1_0re2i"]
+[ext_resource type="Script" path="res://Scripts/SHMUP/GameObjects/Movables/Ammos/Bullet.cs" id="1_2e8k5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5ykn"]
+size = Vector2(20, 6)
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 22
+script = ExtResource("1_2e8k5")
+
+[node name="Renderer" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 1)
+sprite_frames = ExtResource("1_0re2i")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l5ykn")

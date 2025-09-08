@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccg6sgr5n0yqm"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/GameObjects/Collectibles/SmartBomb.cs" id="1_iog0m"]
+[ext_resource type="SpriteFrames" uid="uid://b32trth86a5un" path="res://Assets/SHMUP/Texture/GameObjects/Collectibles/Collectibles.tres" id="1_neaym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lyfyw"]
+radius = 43.1045
+
+[node name="SmartBomb" type="Area2D"]
+script = ExtResource("1_iog0m")
+
+[node name="Renderer" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("1_neaym")
+frame = 2
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lyfyw")

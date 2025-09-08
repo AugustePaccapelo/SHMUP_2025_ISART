@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqixv7hpv8unc"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/GameObjects/Obstacle.cs" id="1_qm4c8"]
+[ext_resource type="SpriteFrames" uid="uid://cylkgl66jw32n" path="res://Assets/SHMUP/Texture/GameObjects/Obstacles/SpriteFramesObstacles.tres" id="2_uqd1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5t6n"]
+size = Vector2(33, 50)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_qm4c8")
+isDestructible = true
+
+[node name="Renderer" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = ExtResource("2_uqd1t")
+frame = 1
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_a5t6n")

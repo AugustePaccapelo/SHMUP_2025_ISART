@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Plrv2AnoGzM=",
+  "success": true,
+  "projectFilePath": "C:\\ISARTDigital\\GDP1B\\Projets\\SHMUP\\PACCAPELO_Auguste_GDP1B_SHMUP\\Projet\\SHMUP\\SHMUP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pacca\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
+    "C:\\Users\\pacca\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",
+    "C:\\Users\\pacca\\.nuget\\packages\\godotsharpeditor\\4.2.2\\godotsharpeditor.4.2.2.nupkg.sha512",
+    "C:\\Users\\pacca\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\pacca\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\pacca\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=3 uid="uid://ct5alvqanbd3v"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/UI/PauseMenu.cs" id="1_mwsip"]
+[ext_resource type="PackedScene" uid="uid://ydm4ysirskho" path="res://Scenes/SHMUP/Controls/Settings.tscn" id="2_8y5ws"]
+[ext_resource type="Texture2D" uid="uid://c8je6ubhssou3" path="res://Assets/SHMUP/UserInterface/Button.png" id="2_66gnq"]
+[ext_resource type="Texture2D" uid="uid://bug7ia3ht42p8" path="res://Assets/SHMUP/UserInterface/ButtonHover.png" id="3_umu2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uidol"]
+font_size = 64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mt7kw"]
+texture = ExtResource("2_66gnq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3kdts"]
+texture = ExtResource("3_umu2h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gu64r"]
+texture = ExtResource("2_66gnq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1iuj"]
+texture = ExtResource("3_umu2h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w81c3"]
+texture = ExtResource("2_66gnq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdor6"]
+texture = ExtResource("3_umu2h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjjti"]
+texture = ExtResource("2_66gnq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v6obk"]
+texture = ExtResource("3_umu2h")
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("settings", "vButtonContainer", "returnButton", "settingsButton", "mainMenuButton", "quitButton", "title")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mwsip")
+settings = NodePath("Settings")
+vButtonContainer = NodePath("VButtonContainer")
+returnButton = NodePath("VButtonContainer/Return")
+settingsButton = NodePath("VButtonContainer/SettingsButton")
+mainMenuButton = NodePath("VButtonContainer/TitleCard")
+quitButton = NodePath("VButtonContainer/Quit")
+title = NodePath("PanelName")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615686, 0.611765, 0.623529, 0.537255)
+
+[node name="PanelName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.5
+offset_right = 92.5
+offset_bottom = 179.0
+grow_horizontal = 2
+text = "
+Pause"
+label_settings = SubResource("LabelSettings_uidol")
+
+[node name="VButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -150.0
+offset_right = 110.5
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Return" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_mt7kw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3kdts")
+text = "Return
+"
+
+[node name="SettingsButton" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_gu64r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_i1iuj")
+text = "Settings"
+
+[node name="TitleCard" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_w81c3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qdor6")
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="VButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_vjjti")
+theme_override_styles/hover = SubResource("StyleBoxTexture_v6obk")
+text = "Quit"
+
+[node name="Settings" parent="." instance=ExtResource("2_8y5ws")]
+visible = false
+layout_mode = 1

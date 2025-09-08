@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6541ufrgwp8g"]
+
+[ext_resource type="Script" path="res://Scripts/SHMUP/UI/Credits.cs" id="1_8u7ep"]
+[ext_resource type="Texture2D" uid="uid://c7k27amjny8av" path="res://Assets/SHMUP/UserInterface/téléchargement (2).png" id="1_s2toq"]
+[ext_resource type="Texture2D" uid="uid://b0ytbv7p26ly" path="res://Assets/SHMUP/Texture/Decor/UIBackGround.png" id="2_ew6qg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5y4b3"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_aaa7t"]
+font_size = 48
+
+[node name="Credits" type="Control" node_paths=PackedStringArray("quitButton", "title")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8u7ep")
+quitButton = NodePath("Quit")
+title = NodePath("PanelName")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ew6qg")
+expand_mode = 1
+
+[node name="PanelName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_right = 110.0
+offset_bottom = 179.0
+grow_horizontal = 2
+text = "
+Credits"
+label_settings = SubResource("LabelSettings_5y4b3")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -89.5
+offset_right = 110.0
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Musics & Sound Design : Bedfert Martret Ewen
+Game Desing & Programming : Paccapelo Auguste"
+label_settings = SubResource("LabelSettings_aaa7t")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_right = 174.0
+offset_bottom = 233.0
+grow_horizontal = 0
+scale = Vector2(0.25, 0.25)
+icon = ExtResource("1_s2toq")
